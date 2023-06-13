@@ -19,7 +19,6 @@ const gen_series = () => {
     const s = (i * 5 + 1) - ~~(i / 3) * 14
     const label = $E('div', {className: 'slabel', innerText: `Series ${s}`});
     const sbox = $E('div', {className: 'series', id: `s${s}`}, [label]);
-    sbox.style.background = `linear-gradient(to right, #fff0 0%, #64000d 33%), url('gregs/${String(s).padStart(2, '0')}.png') -30px 40% no-repeat`;
     sbox.addEventListener('click', () => handle(s));
     qs('#board').appendChild(sbox);
   }

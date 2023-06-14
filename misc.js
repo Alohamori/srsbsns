@@ -19,6 +19,7 @@ const gen_series = () => {
     const s = (i * 5 + 1) - ~~(i / 3) * 14
     const label = $E('div', {className: 'slabel', innerText: `Series ${s}`});
     const sbox = $E('div', {className: 'series', id: `s${s}`}, [label]);
+    sbox.style.background = `linear-gradient(to right, #fff0 0%, #64000d 25%), url('gregs/${String(s).padStart(2, '0')}.png') -10% center no-repeat`;
     sbox.addEventListener('click', () => handle(s));
     qs('#board').appendChild(sbox);
   }
@@ -34,8 +35,11 @@ const undo = e => {
   e.preventDefault();
   const seat = e.target;
   const n = seat.getAttribute('data-i');
-  seat.parentNode.childNodes[0].style.visibility = 'visible';
-  seat.parentNode.removeChild(seat);
+  const sbox = seat.parentNode;
+  sbox.childNodes[0].style.visibility = 'visible';
+  sbox.removeChild(seat);
+  if (sbox.childNodes.length == 1)
+    sbox.style.background = `linear-gradient(to right, #fff0 0%, #64000d 25%), url('gregs/${sbox.id.substr(1).padStart(2, '0')}.png') -10% center no-repeat`;
   deck.push(cur, n);
   tick();
 };
@@ -139,6 +143,7 @@ const handle = si => {
   const sbox = qs(`#s${si}`);
   if (sbox.childNodes.length > 4) sbox.childNodes[0].style.visibility = 'hidden';
   if (sbox.childNodes.length > 5) return;
+  sbox.style.background = '#64000dd0';
 
   const seat = gen_seat(cur);
   const seated = sbox.querySelectorAll('.seat');

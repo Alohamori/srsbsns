@@ -23,13 +23,11 @@ body { background-image: url('tile.png'); font-family: SpecialElite; }
 }
 
 #deck-wrap { flex-basis: 10%; }
+
 #deck {
   height: 100%;
   aspect-ratio: 5 / 7;
-  background-image: url('greg.png');
-  background-size: 120%;
-  background-position: center;
-  background-repeat: no-repeat;
+  background: linear-gradient(-45deg, #ffffff30 0%, #64000dff 50%, #ffffff30 100%);
   border: 2px solid #370003;
   font-size: 3.5em;
   text-align: center;
@@ -119,10 +117,7 @@ input { accent-color: #930416; transform: scale(1.5); margin: 5%; }
 #pass span { font-size: 75%; }
 
 .pile-card {
-  background-image: url('greg.png');
-  background-size: 120%;
-  background-position: center;
-  background-repeat: no-repeat;
+  background: linear-gradient(-45deg, #ffffff30 0%, #64000dff 50%, #ffffff30 100%);
   position: absolute;
   top: 0; left: 30%;
   height: 50%;
